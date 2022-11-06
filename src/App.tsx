@@ -1,9 +1,8 @@
 import { Suspense } from 'react'
 import {BrowserRouter, useRoutes} from "react-router-dom";
-import routes from '~react-pages'
 
 function App() {
-  const Routes = () => useRoutes(routes)
+  const Routes = () => useRoutes([])
   return (
     <BrowserRouter>
       <Suspense fallback={<>Loading...</>}>
