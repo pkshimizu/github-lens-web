@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import {BrowserRouter, useRoutes} from "react-router-dom";
+import { BrowserRouter, useRoutes } from 'react-router-dom'
 
 function App() {
   const Routes = () => useRoutes([])
