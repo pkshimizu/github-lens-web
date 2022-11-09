@@ -558,6 +558,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@okteto/react-oauth2-login@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@okteto/react-oauth2-login/-/react-oauth2-login-1.0.1.tgz#b570d107388122e480fa094018e812f8f6058389"
+  integrity sha512-HdE6Q/U6UsxWVr04S6lL8swnysKQaAfUKvSta/Y9AD9NshxtBIXg7Bv+3uZ3Z/qOZxMfxRVt1DQuaJK6jkGCXg==
+
 "@pkgr/utils@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-2.3.1.tgz#0a9b06ffddee364d6642b3cd562ca76f55b34a03"
