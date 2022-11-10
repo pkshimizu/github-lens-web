@@ -1,26 +1,13 @@
-import LoginOAuth2 from '@okteto/react-oauth2-login'
-import { useCallback } from 'react'
+import Button from '@/components/parts/inputs/Button'
+import useConfig from '@/hooks/useConfig'
 
 export default function LoginForm() {
-  const handleClick = useCallback(() => {
-    console.log('Click')
-  }, [])
-  const handleSuccess = useCallback((response: { code: string }) => {
-    console.log(response.code)
-  }, [])
-  const handleFailure = useCallback((response: { message: string }) => {
-    console.log(response.message)
-  }, [])
+  const { siteBaseUrl, githubOauthClientId } = useConfig()
   return (
-    <LoginOAuth2
-      className={''}
-      clientId={'3f919dfa78937b9bb67e'}
-      scope={'code'}
-      authorizeUri={'https://github.com/login/oauth/authorize'}
-      redirectUri={'http://localhost:5173/oauth_callback'}
-      onClick={handleClick}
-      onSuccess={handleSuccess}
-      onFailure={handleFailure}
-    />
+    <Button
+      href={`https://github.com/login/oauth/authorize?client_id=${githubOauthClientId}&scope=repo&redirect_uri=${siteBaseUrl}/oauth_callback`}
+    >
+      Sign in with GitHub
+    </Button>
   )
 }
