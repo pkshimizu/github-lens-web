@@ -1,13 +1,13 @@
 import { Suspense } from 'react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
+import { RecoilRoot } from 'recoil'
+
+import { routes } from '@/routes'
+
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
-
-import { RecoilRoot } from 'recoil'
-
-import { routes } from '@/routes'
 
 function App() {
   const Routes = () => useRoutes(routes)

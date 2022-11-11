@@ -15,7 +15,7 @@ export const sessionState = atom<Session>({
   },
 })
 
-const sessionSignIn = selectorFamily<void, { code: string }>({
+export const sessionSignIn = selectorFamily<void, { code: string }>({
   key: 'SessionSignIn',
   get:
     (params) =>
