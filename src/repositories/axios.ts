@@ -5,6 +5,5 @@ const instance = axios.create({
     'Content-Type': 'application/json',
   },
 })
-console.log(instance)
 
 export default instance
