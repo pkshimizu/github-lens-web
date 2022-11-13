@@ -1630,6 +1630,10 @@ get-tsconfig@^4.2.0:
   resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.2.0.tgz#ff368dd7104dab47bf923404eb93838245c66543"
   integrity sha512-X8u8fREiYOE6S8hLbq99PeykTDoLVnxvF4DjWKJmz9xy2nNRdUcV8ZN9tniJFeKyTU3qnC9lL8n4Chd6LmVKHg==
 
+github-lens-types@pkshimizu/github-lens-types:
+  version "1.0.1"
+  resolved "https://codeload.github.com/pkshimizu/github-lens-types/tar.gz/90ca00f4928b2d3913662ee74611c339b61ebe1d"
+
 glob-parent@^5.1.2:
   version "5.1.2"
   resolved "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz"

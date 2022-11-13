@@ -1,4 +1,4 @@
-import { atom, selectorFamily } from 'recoil'
+import { atom, selectorFamily, selector } from 'recoil'
 
 import SessionRepository from '@/repositories/session'
 
@@ -23,4 +23,9 @@ export const sessionSignIn = selectorFamily<void, { code: string }>({
       const repository = get(sessionState).repository
       await repository.signIn(params.code)
     },
+})
+
+export const sessionToken = selector({
+  key: 'SessionToken',
+  get: ({ get }) => get(sessionState).token,
 })
