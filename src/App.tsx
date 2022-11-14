@@ -2,7 +2,6 @@ import { Suspense } from 'react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 
-import { AxiosProvider } from '@/components/parts/system/AxiosProvider'
 import { routes } from '@/routes'
 
 import '@fontsource/roboto/300.css'
@@ -14,13 +13,11 @@ function App() {
   const Routes = () => useRoutes(routes)
   return (
     <RecoilRoot>
-      <AxiosProvider>
-        <BrowserRouter>
-          <Suspense fallback={<>Loading...</>}>
-            <Routes />
-          </Suspense>
-        </BrowserRouter>
-      </AxiosProvider>
+      <BrowserRouter>
+        <Suspense fallback={<>Loading...</>}>
+          <Routes />
+        </Suspense>
+      </BrowserRouter>
     </RecoilRoot>
   )
 }

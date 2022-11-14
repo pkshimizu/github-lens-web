@@ -1,11 +1,10 @@
 import Button from '@/components/parts/inputs/Button'
-import useConfig from '@/hooks/useConfig'
+import config from '@/config'
 
 export default function LoginForm() {
-  const { siteBaseUrl, githubOauthClientId } = useConfig()
   return (
     <Button
-      href={`https://github.com/login/oauth/authorize?client_id=${githubOauthClientId}&scope=repo&redirect_uri=${siteBaseUrl}/oauth_callback`}
+      href={`https://github.com/login/oauth/authorize?client_id=${config.githubOauthClientId}&scope=repo&redirect_uri=${config.siteBaseUrl}/oauth_callback`}
     >
       Sign in with GitHub
     </Button>

@@ -1,16 +1,15 @@
 import { atom, selectorFamily, selector } from 'recoil'
 
+import { networkInstance } from '@/repositories/network'
 import SessionRepository from '@/repositories/session'
 
 type Session = {
-  repository: SessionRepository
   token?: string
 }
 
 export const sessionState = atom<Session>({
   key: 'SessionState',
   default: {
-    repository: new SessionRepository(),
     token: undefined,
   },
 })
@@ -20,7 +19,8 @@ export const sessionSignIn = selectorFamily<void, { code: string }>({
   get:
     (params) =>
     async ({ get }) => {
-      const repository = get(sessionState).repository
+      const instance = get(networkInstance)
+      const repository = new SessionRepository(instance)
       await repository.signIn(params.code)
     },
 })
