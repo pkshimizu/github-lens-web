@@ -1,31 +1,40 @@
-import { atom, selectorFamily, selector } from 'recoil'
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit'
 
-import { networkInstance } from '@/repositories/network'
+import { AxiosRequest } from '@/repositories/request'
 import SessionRepository from '@/repositories/session'
+import { StoreState } from '@/stores/index'
 
-type Session = {
+type SessionState = {
   token?: string
 }
 
-export const sessionState = atom<Session>({
-  key: 'SessionState',
-  default: {
-    token: undefined,
+const sessionState = (state: StoreState) => state.session
+const request = createSelector([sessionState], (state) => new AxiosRequest(state.token))
+export const SessionSelectors = {
+  sessionRepository: createSelector([request], (state) => new SessionRepository(state)),
+}
+
+export const SessionInitialState: SessionState = {}
+
+export const SessionActions = {
+  signIn: createAsyncThunk(
+    'session/signIn',
+    async (params: { code: string; sessionRepository: SessionRepository }) => {
+      const token = await params.sessionRepository.signIn(params.code)
+      return {
+        token,
+      }
+    }
+  ),
+}
+
+export const SessionSlice = createSlice({
+  name: 'session',
+  initialState: SessionInitialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(SessionActions.signIn.fulfilled, (state, action) => {
+      state.token = action.payload.token
+    })
   },
-})
-
-export const sessionSignIn = selectorFamily<void, { code: string }>({
-  key: 'SessionSignIn',
-  get:
-    (params) =>
-    async ({ get }) => {
-      const instance = get(networkInstance)
-      const repository = new SessionRepository(instance)
-      await repository.signIn(params.code)
-    },
-})
-
-export const sessionToken = selector({
-  key: 'SessionToken',
-  get: ({ get }) => get(sessionState).token,
 })

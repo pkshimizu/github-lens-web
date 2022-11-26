@@ -1,11 +1,11 @@
-import { AxiosInstance } from 'axios'
-import { SessionPostResponse } from 'github-lens-types'
+import { AxiosRequest } from '@/repositories/request'
+import { SessionPostResponse } from '@/repositories/types'
 
 export default class SessionRepository {
-  constructor(private readonly instance: AxiosInstance) {}
+  constructor(private readonly request: AxiosRequest) {}
 
   async signIn(code: string) {
-    const response = await this.instance.post<SessionPostResponse>('/sessions', { code })
-    return response.data
+    const response = await this.request.post<SessionPostResponse>('/v1/sessions', { code })
+    return response.data.token
   }
 }
