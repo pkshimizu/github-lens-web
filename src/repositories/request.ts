@@ -25,7 +25,7 @@ export class AxiosRequest {
       'Content-Type': 'application/json',
     }
     if (token) {
-      headers.Authorization = `Token ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
     this.instance = axios.create({
       baseURL: config.apiServerBaseUrl,

@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 
+import SessionProvider from '@/components/features/session/SessionProvider'
 import { routes } from '@/routes'
 import store from '@/stores'
 
@@ -14,11 +15,13 @@ function App() {
   const Routes = () => useRoutes(routes)
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Suspense fallback={<>Loading...</>}>
-          <Routes />
-        </Suspense>
-      </BrowserRouter>
+      <SessionProvider>
+        <BrowserRouter>
+          <Suspense fallback={<>Loading...</>}>
+            <Routes />
+          </Suspense>
+        </BrowserRouter>
+      </SessionProvider>
     </Provider>
   )
 }
